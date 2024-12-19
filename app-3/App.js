@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, FlatList, TextInput, Button } from 'react-native';
 
-const DATA = [
-  {
-    title: "Pratos principais",
-    data: ["Pizza", "Burger", "Risoto"]
-  }
-]
-
 function Item(props) {
 
   return (
