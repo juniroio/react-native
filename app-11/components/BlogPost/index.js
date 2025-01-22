@@ -1,27 +1,13 @@
 import React from 'react'
 import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import RenderHTML from 'react-native-render-html'
-import { WebView } from 'react-native-webview';
 
 
-export default function BlogPost({ item, navigation, width }) {
-
-    const previewText = item.content ? item.content + '...' : 'Sem conteúdo';
-    const source = { html: `<div style='color: white'></div>` }
+export default function BlogPost({ item, navigation }) {
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('BlogPost', { post: item })} style={styles.postContainer}>
-            {item.urlToImage && (
-                <Image
-                    source={{ uri: item.urlToImage }}
-                    style={styles.image}
-                />
-            )}
-            <Text style={styles.title}>{item.title}</Text>
-            <WebView
-                originWhitelist={['*']}
-                source={{ html: '<p>Here I am</p>' }}
-            />
+        <TouchableOpacity onPress={() => navigation.navigate('BlogPost', { id: item.id })} style={styles.postContainer}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.phone}>{item.phone}</Text>
         </TouchableOpacity>
     )
 
@@ -34,19 +20,16 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ddd',
         paddingBottom: 10,
     },
-    image: {
-        width: '100%',
-        height: 200,
-        resizeMode: 'cover',
-    },
-    title: {
+    name: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 16,
-        marginTop: 5,
     },
-    webView: {
-        width: 100
+    phone: {
+        color: 'white',
+        fontSize: 12,
+        marginTop: 3,
+        marginBottom: 5
     }
 })
 
